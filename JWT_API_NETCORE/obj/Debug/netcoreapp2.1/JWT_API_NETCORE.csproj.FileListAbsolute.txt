@@ -1,0 +1,17 @@
+C:\Users\Karim\Documents\Visual Studio 2017\Projects\JWT_API_NETCORE\JWT_API_NETCORE\bin\Debug\netcoreapp2.1\appsettings.Development.json
+C:\Users\Karim\Documents\Visual Studio 2017\Projects\JWT_API_NETCORE\JWT_API_NETCORE\bin\Debug\netcoreapp2.1\appsettings.json
+C:\Users\Karim\Documents\Visual Studio 2017\Projects\JWT_API_NETCORE\JWT_API_NETCORE\bin\Debug\netcoreapp2.1\Properties\launchSettings.json
+C:\Users\Karim\Documents\Visual Studio 2017\Projects\JWT_API_NETCORE\JWT_API_NETCORE\bin\Debug\netcoreapp2.1\JWT_API_NETCORE.deps.json
+C:\Users\Karim\Documents\Visual Studio 2017\Projects\JWT_API_NETCORE\JWT_API_NETCORE\bin\Debug\netcoreapp2.1\JWT_API_NETCORE.runtimeconfig.json
+C:\Users\Karim\Documents\Visual Studio 2017\Projects\JWT_API_NETCORE\JWT_API_NETCORE\bin\Debug\netcoreapp2.1\JWT_API_NETCORE.runtimeconfig.dev.json
+C:\Users\Karim\Documents\Visual Studio 2017\Projects\JWT_API_NETCORE\JWT_API_NETCORE\bin\Debug\netcoreapp2.1\JWT_API_NETCORE.dll
+C:\Users\Karim\Documents\Visual Studio 2017\Projects\JWT_API_NETCORE\JWT_API_NETCORE\bin\Debug\netcoreapp2.1\JWT_API_NETCORE.pdb
+C:\Users\Karim\Documents\Visual Studio 2017\Projects\JWT_API_NETCORE\JWT_API_NETCORE\obj\Debug\netcoreapp2.1\JWT_API_NETCORE.csproj.CoreCompileInputs.cache
+C:\Users\Karim\Documents\Visual Studio 2017\Projects\JWT_API_NETCORE\JWT_API_NETCORE\obj\Debug\netcoreapp2.1\JWT_API_NETCORE.RazorAssemblyInfo.cache
+C:\Users\Karim\Documents\Visual Studio 2017\Projects\JWT_API_NETCORE\JWT_API_NETCORE\obj\Debug\netcoreapp2.1\JWT_API_NETCORE.RazorAssemblyInfo.cs
+C:\Users\Karim\Documents\Visual Studio 2017\Projects\JWT_API_NETCORE\JWT_API_NETCORE\obj\Debug\netcoreapp2.1\JWT_API_NETCORE.AssemblyInfoInputs.cache
+C:\Users\Karim\Documents\Visual Studio 2017\Projects\JWT_API_NETCORE\JWT_API_NETCORE\obj\Debug\netcoreapp2.1\JWT_API_NETCORE.AssemblyInfo.cs
+C:\Users\Karim\Documents\Visual Studio 2017\Projects\JWT_API_NETCORE\JWT_API_NETCORE\obj\Debug\netcoreapp2.1\JWT_API_NETCORE.RazorTargetAssemblyInfo.cache
+C:\Users\Karim\Documents\Visual Studio 2017\Projects\JWT_API_NETCORE\JWT_API_NETCORE\obj\Debug\netcoreapp2.1\JWT_API_NETCORE.dll
+C:\Users\Karim\Documents\Visual Studio 2017\Projects\JWT_API_NETCORE\JWT_API_NETCORE\obj\Debug\netcoreapp2.1\JWT_API_NETCORE.pdb
+C:\Users\Karim\Documents\Visual Studio 2017\Projects\JWT_API_NETCORE\JWT_API_NETCORE\obj\Debug\netcoreapp2.1\JWT_API_NETCORE.genruntimeconfig.cache
