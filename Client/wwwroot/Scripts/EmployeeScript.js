@@ -14,8 +14,13 @@ $(document).ready(function () {
             { "searchable": false, "targets": 8 }
         ],
         "columns": [
-            { "data": "firstName" },
-            { "data": "departmentName", "name": "Department Name" },
+           //{ "data": "firstName" },
+            {
+                "data": null, render: function (data, type, row) {
+                    return data.firstName + ' ' + data.lastName;
+                }
+            },
+            { "data": "departmentName"},
             { "data": "email", "name": "Email" },
             {
                 "data": "birthDate", "render": function (data) {
