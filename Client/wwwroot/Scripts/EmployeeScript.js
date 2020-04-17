@@ -1,6 +1,6 @@
 ﻿var table = null;
 var dateNow = new Date();
-var Departments = [];
+var Departments = []; //
 $(document).ready(function () {
     table = $('#et').DataTable({ //Nama table pada index
         "ajax": {
@@ -21,13 +21,13 @@ $(document).ready(function () {
                 }
             },
             { "data": "departmentName"},
-            { "data": "email", "name": "Email" },
+            { "data": "email"},
             {
                 "data": "birthDate", "render": function (data) {
                     return moment(data).format('DD/MM/YYYY');
                 }
             },
-            { "data": "phoneNumber", "name": "Phone Number" },
+            { "data": "phoneNumber"},
             { "data": "address", "name": "Address" },
             {
                 "data": "createDate", "render": function (data) {
@@ -117,7 +117,7 @@ function GetById(Id) {
             $('#FirstName').val(result[0].firstName);
             $('#LastName').val(result[0].lastName);
             $('#Email').val(result[0].email);
-            $('#BirthDate').val(result[0].birthDate);
+            $('#BirthDate').val(moment(result[0].birthDate).format('YYYY-MM-DD'));
             $('#PhoneNumber').val(result[0].phoneNumber);
             $('#Address').val(result[0].address);
             $('#DepartmentOption').val(result[0].department_Id);
@@ -207,7 +207,13 @@ function Delete(Id) {
 
 function ClearScreen() {
     $('#Id').val('');
-    $('#Name').val('');
+    $('#FirstName').val('');
+    $('#LastName').val('');
+    $('#Email').val('');
+    $('#BirthDate').val('');
+    $('#DepartmentOption').val('');
+    $('#PhoneNumber').val('');
+    $('#Address').val('');
     //$('#Save').show();
     //$('#Update').hide();
     //$('#Delete').hide();
@@ -216,10 +222,15 @@ function ClearScreen() {
 
 // handle error after action edit
 document.getElementById("btncreatedept").addEventListener("click", function () {
-    $('#Id').val('');
-    $('#Name').val('');
-    $('#Save').show();
-    $('#Update').hide();
+    //$('#Id').val('');
+    //$('#FirstName').val('');
+    //$('#LastName').val('');
+    //$('#Email').val('');
+    //$('#BirthDate').val('');
+    //$('#DepartmentOption').val('');
+    //$('#PhoneNumber').val('');
+    //$('#Address').val('');
+    ClearScreen();
 });
 
 
