@@ -98,6 +98,17 @@ namespace JWT_API_NETCORE.Repository.Data
         }
 
 
+        public async Task<IEnumerable<ChartViewModel>> GetChart()
+        {
+            using (var connection = new SqlConnection(_configuration.GetConnectionString("MyNetCoreConnection")))
+            {
+                var spName = "SP_GetChartEmployee";
+                var data = await connection.QueryAsync<ChartViewModel>(spName, commandType: CommandType.StoredProcedure);
+                return data;
+            }
+        }
+
+
 
     }
 

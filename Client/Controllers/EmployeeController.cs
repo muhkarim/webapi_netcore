@@ -144,6 +144,37 @@ namespace Client.Controllers
         }
 
 
+        public JsonResult GetChart()
+        {
+            IEnumerable<ChartViewModel> chartInfo = null;
+            List<ChartViewModel> chartData = new List<ChartViewModel>();
+
+  
+            client.DefaultRequestHeaders.Add("Authorization", HttpContext.Session.GetString("JWTToken"));
+
+            var responseTask = client.GetAsync("Employee/ChartInfo"); 
+            responseTask.Wait(); 
+            var result = responseTask.Result;
+
+            if (result.IsSuccessStatusCode) 
+            {
+                var readTask = result.Content.ReadAsAsync<IList<ChartViewModel>>(); //Get all the data from the API
+                readTask.Wait();
+                chartInfo = readTask.Result;
+                foreach (var item in chartInfo)
+                {
+                    ChartViewModel data = new ChartViewModel();
+                    data.label = item.label;
+                    data.value = item.value;
+                    chartData.Add(data);
+                }
+                var json = JsonConvert.SerializeObject(chartData, Formatting.Indented);
+                return Json(json);
+            }
+            return Json("internal server error");
+        }
+
+
 
 
 

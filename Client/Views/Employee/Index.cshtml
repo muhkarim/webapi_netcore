@@ -5,6 +5,29 @@
 }
 
 
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+
+                    <div id="EmployeeChart"></div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+
+                    <div id="EmployeeBar"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 <div class="row page-titles">
     <div class="col-md-6 col-8 align-self-center">
         <h3 class="text-themecolor m-b-0 m-t-0">Table Data table</h3>
@@ -63,7 +86,7 @@
 
 
 <!-- Modal Bootstrap -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+@*<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -78,13 +101,19 @@
                     <div class="form-group">
                         <input type="hidden" class="form-control" id="Id">
                     </div>
-                    <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">First Name : </label>
-                        <input type="text" class="form-control" id="FirstName">
-                    </div>
-                    <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Last Name : </label>
-                        <input type="text" class="form-control" id="LastName">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">First Name : </label>
+                                <input type="text" class="form-control" id="FirstName">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Last Name : </label>
+                                <input type="text" class="form-control" id="LastName">
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Email : </label>
@@ -119,8 +148,84 @@
             </div>
         </div>
     </div>
+</div>*@
+
+<div id="exampleModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">Create New Employee</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <form>
+
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" id="Id">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Email : </label>
+                            <input type="email" class="form-control" id="Email">
+                        </div>
+                        <div class="form-group" id="inputPassword">
+                            <label for="recipient-name" class="col-form-label">Password : </label>
+                            <input type="password" class="form-control" id="Password">
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">First Name : </label>
+                                    <input type="text" class="form-control" id="FirstName">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">Last Name : </label>
+                                    <input type="text" class="form-control" id="LastName">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Birthdate : </label>
+                            <input type="date" class="form-control" id="BirthDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Phone Number : </label>
+                            <input type="text" class="form-control" id="PhoneNumber">
+                        </div>
+                        <div class="form-group">
+                            <label for="DepartmentOption">Department</label>
+                            <select class="form-control" id="DepartmentOption"></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Address : </label>
+                            <textarea type="text" class="form-control" id="Address" rows="4"></textarea>
+                        </div>
+
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="Save()" id="btnSave">Save</button>
+                    <button type="button" class="btn btn-warning" onclick="Edit()" id="btnUpdate">Update</button>
+                </div>
+
+            </div>
+        </div>
 </div>
 
 @section Scripts{
     <script src="~/Scripts/EmployeeScript.js"></script>
+
+
+    <!--Morris JavaScript -->
+    <script src="~/Mini AdminPro/assets/plugins/raphael/raphael-min.js"></script>
+    <script src="~/Mini AdminPro/assets/plugins/morrisjs/morris.js"></script>
 }

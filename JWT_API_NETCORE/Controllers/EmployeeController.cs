@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using JWT_API_NETCORE.Base;
 using JWT_API_NETCORE.Models;
 using JWT_API_NETCORE.Repository.Data;
+using JWT_API_NETCORE.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -85,6 +86,14 @@ namespace JWT_API_NETCORE.Controllers
                 return NotFound();
             }
             return Ok(delete);
+        }
+
+        [HttpGet]
+        [Route("ChartInfo")]
+        [HttpGet]
+        public async Task<IEnumerable<ChartViewModel>> Chart()
+        {
+            return await _repository.GetChart();
         }
     }
 }

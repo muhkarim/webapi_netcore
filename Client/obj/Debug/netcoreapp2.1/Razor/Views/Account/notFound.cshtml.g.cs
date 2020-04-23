@@ -67,7 +67,7 @@ using Client.Models;
             WriteLiteral("\r\n<!DOCTYPE html>\r\n<html lang=\"en\">\r\n\r\n");
             EndContext();
             BeginContext(68, 999, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7f0d46cbf75b45f28564d154d509dc02", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "51f607f082c3476193575b2ec9333685", async() => {
                 BeginContext(74, 500, true);
                 WriteLiteral(@"
     <meta charset=""utf-8"">
@@ -84,7 +84,7 @@ using Client.Models;
     ");
                 EndContext();
                 BeginContext(574, 85, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "1412850dca304f65bed60f55fee6a0f6", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "e33ecb041c664f7aad03dba52081a323", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -128,7 +128,7 @@ using Client.Models;
             WriteLiteral("\r\n\r\n");
             EndContext();
             BeginContext(1071, 327, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6ca0935b5fd04f68acecccca630cb6da", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1077d0b206c54e51bb369f611dc0e9fe", async() => {
                 BeginContext(1077, 223, true);
                 WriteLiteral("\r\n\r\n    <div id=\"notfound\">\r\n        <div class=\"notfound\">\r\n            <div class=\"notfound-404\">\r\n                <h1>Oops!</h1>\r\n                <h2>404 - The Page can\'t be found</h2>\r\n            </div>\r\n            <a");
                 EndContext();

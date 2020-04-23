@@ -59,13 +59,14 @@ namespace Client.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Index", "EmployeeDetail");
+                    return RedirectToAction("Index", "EmployeeDetail"); // go to employe details
                 }
 
 
 
             }
-            else {
+            else 
+            {
 
                 return View();
             }
