@@ -19,7 +19,10 @@ C:\Users\Karim\Documents\Visual Studio 2017\Projects\JWT_API_NETCORE\Client\obj\
 C:\Users\Karim\Documents\Visual Studio 2017\Projects\JWT_API_NETCORE\Client\obj\Debug\netcoreapp2.1\Client.TagHelpers.input.cache
 C:\Users\Karim\Documents\Visual Studio 2017\Projects\JWT_API_NETCORE\Client\obj\Debug\netcoreapp2.1\Client.TagHelpers.output.cache
 C:\Users\Karim\Documents\Visual Studio 2017\Projects\JWT_API_NETCORE\Client\obj\Debug\netcoreapp2.1\Client.RazorCoreGenerate.cache
+C:\Users\Karim\Documents\Visual Studio 2017\Projects\JWT_API_NETCORE\Client\obj\Debug\netcoreapp2.1\Razor\Views\Account\Login.cshtml.g.cs
+C:\Users\Karim\Documents\Visual Studio 2017\Projects\JWT_API_NETCORE\Client\obj\Debug\netcoreapp2.1\Razor\Views\Account\notFound.cshtml.g.cs
 C:\Users\Karim\Documents\Visual Studio 2017\Projects\JWT_API_NETCORE\Client\obj\Debug\netcoreapp2.1\Razor\Views\Department\Index.cshtml.g.cs
+C:\Users\Karim\Documents\Visual Studio 2017\Projects\JWT_API_NETCORE\Client\obj\Debug\netcoreapp2.1\Razor\Views\EmployeeDetail\Index.cshtml.g.cs
 C:\Users\Karim\Documents\Visual Studio 2017\Projects\JWT_API_NETCORE\Client\obj\Debug\netcoreapp2.1\Razor\Views\Employee\Index.cshtml.g.cs
 C:\Users\Karim\Documents\Visual Studio 2017\Projects\JWT_API_NETCORE\Client\obj\Debug\netcoreapp2.1\Razor\Views\Home\About.cshtml.g.cs
 C:\Users\Karim\Documents\Visual Studio 2017\Projects\JWT_API_NETCORE\Client\obj\Debug\netcoreapp2.1\Razor\Views\Home\Contact.cshtml.g.cs

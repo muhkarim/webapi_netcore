@@ -42,9 +42,8 @@ namespace JWT_API_NETCORE.Migrations
 
             modelBuilder.Entity("JWT_API_NETCORE.Models.Employee", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Email")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Address");
 
@@ -56,8 +55,6 @@ namespace JWT_API_NETCORE.Migrations
 
                     b.Property<int>("Department_Id");
 
-                    b.Property<string>("Email");
-
                     b.Property<string>("FirstName");
 
                     b.Property<bool>("IsDelete");
@@ -68,7 +65,7 @@ namespace JWT_API_NETCORE.Migrations
 
                     b.Property<DateTimeOffset?>("UpdateDate");
 
-                    b.HasKey("Id");
+                    b.HasKey("Email");
 
                     b.HasIndex("Department_Id");
 
@@ -97,6 +94,11 @@ namespace JWT_API_NETCORE.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
+
+                    b.HasData(
+                        new { Id = "1", Name = "Admin", NormalizedName = "ADMIN" },
+                        new { Id = "2", Name = "Employee", NormalizedName = "CUSTOMER" }
+                    );
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

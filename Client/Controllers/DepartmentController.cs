@@ -5,28 +5,41 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using JWT_API_NETCORE.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 namespace Client.Controllers
 {
+
     public class DepartmentController : Controller
     {
-        
+        private HttpClient client = new HttpClient
+        {
+            BaseAddress = new Uri("https://localhost:44385/api/")
+        };
+
         public IActionResult Index()
         {
-            return View(LoadDepartment());
+            
+            var role = HttpContext.Session.GetString("Role");
+            if (role == "Admin") {
+                return View(LoadDepartment());
+            }
+
+            return RedirectToAction("notFound", "Account");
+           
+
         }
 
 
         public JsonResult LoadDepartment()
         {
-            DepartmentJson departmentVM = null;
-            var client = new HttpClient
-            {
-                BaseAddress = new Uri("https://localhost:44385/api/")
-            };
+            //add jwt token 
+            client.DefaultRequestHeaders.Add("Authorization", HttpContext.Session.GetString("JWTToken"));
 
+            DepartmentJson departmentVM = null;
+            
             var responTask = client.GetAsync("department");
             responTask.Wait();
             var result = responTask.Result;
@@ -46,10 +59,8 @@ namespace Client.Controllers
 
         public JsonResult InsertOrUpdate(DepartmentVM departmentVM)
         {
-            var client = new HttpClient
-            {
-                BaseAddress = new Uri("https://localhost:44385/api/")
-            };
+            //add jwt token 
+            client.DefaultRequestHeaders.Add("Authorization", HttpContext.Session.GetString("JWTToken"));
 
             var myContent = JsonConvert.SerializeObject(departmentVM);
             var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
@@ -72,11 +83,11 @@ namespace Client.Controllers
 
         public JsonResult GetById(int Id)
         {
+            //add jwt token 
+           client.DefaultRequestHeaders.Add("Authorization", HttpContext.Session.GetString("JWTToken"));
+
             DepartmentVM departmentVM = null;
-            var client = new HttpClient
-            {
-                BaseAddress = new Uri("https://localhost:44385/api/")
-            };
+           
             var responseTask = client.GetAsync("department/" + Id);
             responseTask.Wait();
             var result = responseTask.Result;
@@ -95,10 +106,9 @@ namespace Client.Controllers
 
         public JsonResult Delete(int Id)
         {
-            var client = new HttpClient
-            {
-                BaseAddress = new Uri("https://localhost:44385/api/")
-            };
+            //add jwt token 
+           client.DefaultRequestHeaders.Add("Authorization", HttpContext.Session.GetString("JWTToken"));
+
             var result = client.DeleteAsync("department/" + Id).Result;
             return Json(result);
         }

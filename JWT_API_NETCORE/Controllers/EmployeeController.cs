@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using JWT_API_NETCORE.Base;
 using JWT_API_NETCORE.Models;
 using JWT_API_NETCORE.Repository.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JWT_API_NETCORE.Controllers
 {
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [Route("api/[controller]")]
     [ApiController]
     public class EmployeeController : BasesController<Employee, EmployeeRepository>
@@ -29,10 +31,10 @@ namespace JWT_API_NETCORE.Controllers
             return await _repository.GetAll();
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<EmployeeVM>> Get(int id)
+        [HttpGet("{Email}")]
+        public async Task<ActionResult<EmployeeVM>> Get(string Email)
         {
-            var get = await _repository.GetById(id);
+            var get = await _repository.GetByEmail(Email);
             if (get == null)
             {
                 return NotFound();
@@ -41,13 +43,21 @@ namespace JWT_API_NETCORE.Controllers
         }
 
 
+        [HttpPost]
+        public async Task<ActionResult<Employee>> Post(Employee employee)
+        {
+            await _repository.Post(employee);
+            return CreatedAtAction("Get", new { Email = employee.Email }, employee);
+        }
 
 
-        [HttpPut("{Id}")]
-        public async Task<ActionResult<Employee>> Put(int Id, Employee model)
+
+
+        [HttpPut("{email}")]
+        public async Task<ActionResult<Employee>> Put(string email, Employee model)
         {
 
-            var update = await _repository.Get(Id);
+            var update = await _repository.GetEmail(email);
             if (update == null)
             {
                 return NotFound();
@@ -64,6 +74,17 @@ namespace JWT_API_NETCORE.Controllers
             update.Department_Id = model.Department_Id;
             await _repository.Put(update);
             return Ok("Update Successfully");
+        }
+
+        [HttpDelete("{email}")]
+        public async Task<ActionResult> Delete(string email)
+        {
+            var delete = await _repository.Delete(email);
+            if (delete == null)
+            {
+                return NotFound();
+            }
+            return Ok(delete);
         }
     }
 }

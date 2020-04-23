@@ -1,18 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using JWT_API_NETCORE.Context;
 using JWT_API_NETCORE.Repository.Data;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 
 namespace JWT_API_NETCORE
 {
@@ -33,9 +37,44 @@ namespace JWT_API_NETCORE
             services.AddDbContext<MyContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("MyNetCoreConnection")));
 
+            // validation password
+            services.AddIdentity<IdentityUser, IdentityRole>(
+                   option =>
+                   {
+                       option.Password.RequireDigit = false;
+                       option.Password.RequiredLength = 6;
+                       option.Password.RequireNonAlphanumeric = false;
+                       option.Password.RequireUppercase = false;
+                       option.Password.RequireLowercase = false;
+                   }
+               ).AddEntityFrameworkStores<MyContext>()
+               .AddDefaultTokenProviders();
+
+            // add authorize middleware in API
+            services.AddAuthentication(option => {
+                option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                option.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options => {
+                options.SaveToken = true;
+                options.RequireHttpsMetadata = true;
+                options.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidAudience = Configuration["Jwt:Site"],
+                    ValidIssuer = Configuration["Jwt:Site"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:SigningKey"]))
+                };
+            });
+
+
             //add service department
             services.AddScoped<DepartmentRepository>();
             services.AddScoped<EmployeeRepository>();
+
+
+
 
         }
 
@@ -52,7 +91,12 @@ namespace JWT_API_NETCORE
             }
 
             app.UseHttpsRedirection();
+            app.UseAuthentication(); // use authentication
             app.UseMvc();
         }
+        
+
+
+        
     }
 }

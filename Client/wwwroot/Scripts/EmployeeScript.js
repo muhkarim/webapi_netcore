@@ -14,20 +14,20 @@ $(document).ready(function () {
             { "searchable": false, "targets": 8 }
         ],
         "columns": [
-           //{ "data": "firstName" },
+            //{ "data": "firstName" },
             {
                 "data": null, render: function (data, type, row) {
                     return data.firstName + ' ' + data.lastName;
                 }
             },
-            { "data": "departmentName"},
-            { "data": "email"},
+            { "data": "departmentName" },
+            { "data": "email" },
             {
                 "data": "birthDate", "render": function (data) {
                     return moment(data).format('DD/MM/YYYY');
                 }
             },
-            { "data": "phoneNumber"},
+            { "data": "phoneNumber" },
             { "data": "address", "name": "Address" },
             {
                 "data": "createDate", "render": function (data) {
@@ -47,7 +47,7 @@ $(document).ready(function () {
             },
             {
                 data: null, render: function (data, type, row) {
-                    return '<button type="button" class="btn btn-warning" id="BtnEdit" data-toggle="tooltip" data-placement="top" title="Edit" onclick="return GetById(' + row.id + ')"><i class="mdi mdi-pencil"></i></button> &nbsp; <button type="button" class="btn btn-danger" id="BtnDelete" data-toggle="tooltip" data-placement="top" title="Hapus" onclick="return Delete(' + row.id + ')"><i class="mdi mdi-delete"></i></button>';
+                    return " <td><button type='button' class='btn btn-warning' Id='Update' onclick=GetById('" + row.email + "');>Edit</button> <button type='button' class='btn btn-danger' Id='Delete' onclick=Delete('" + row.email + "');>Delete</button ></td >";
                 }
             },
         ]
@@ -59,7 +59,7 @@ $(document).ready(function () {
     })
 
     // hide button update modal
-    $('#Update').hide();
+    //$('#btnUpdate').hide();
 
     LoadDepartment($('#DepartmentOption'));
 });
@@ -71,6 +71,7 @@ function Save() {
     Employee.FirstName = $('#FirstName').val();
     Employee.LastName = $('#LastName').val();
     Employee.Email = $('#Email').val();
+    Employee.Password = $('#Password').val(); //
     Employee.BirthDate = $('#BirthDate').val();
     Employee.PhoneNumber = $('#PhoneNumber').val();
     Employee.Address = $('#Address').val();
@@ -78,10 +79,10 @@ function Save() {
 
         $.ajax({
             type: 'POST',
-            url: '/Employee/InsertOrUpdate/',
+            url: '/Employee/Insert/',
             data: Employee
         }).then((result) => {
-            if (result.statusCode == 201) {
+            if (result.statusCode == 200) {
                 Swal.fire({
                     icon: 'success',
                     position: 'center',
@@ -103,27 +104,32 @@ function Save() {
 
 }
 
-function GetById(Id) {
+function GetById(Email) {
+    debugger;
     $.ajax({
-        url: "/Employee/GetById/" + Id,
+        url: "/Employee/GetById/" + Email,
         type: "GET",
         contentType: "application/json;charset=utf-8",
         dataType: "json",
+        data: { Email: Email },
         async: false,
         success: function (result) {
+            debugger;
             //const obj = JSON.parse(result);
             // # atribut id pada html
             $('#Id').val(result[0].id);
             $('#FirstName').val(result[0].firstName);
             $('#LastName').val(result[0].lastName);
             $('#Email').val(result[0].email);
+            $('#Password').val(result[0].password);
             $('#BirthDate').val(moment(result[0].birthDate).format('YYYY-MM-DD'));
             $('#PhoneNumber').val(result[0].phoneNumber);
             $('#Address').val(result[0].address);
             $('#DepartmentOption').val(result[0].department_Id);
             $("#exampleModal").modal('show');
-            $('#Update').show();
-            $('#Save').hide();
+            $('#btnUpdate').show();
+            $('#btnSave').hide();
+            $('#inputPassword').hide();
 
         },
 
@@ -141,13 +147,14 @@ function Edit() {
     Employee.FirstName = $('#FirstName').val();
     Employee.LastName = $('#LastName').val();
     Employee.Email = $('#Email').val();
+    Employee.Password = $('#Password').val();
     Employee.BirthDate = $('#BirthDate').val();
     Employee.PhoneNumber = $('#PhoneNumber').val();
     Employee.Address = $('#Address').val();
     Employee.Department_Id = $('#DepartmentOption').val();
     $.ajax({
         type: 'POST',
-        url: 'Employee/InsertOrUpdate',
+        url: '/Employee/Update',
         data: Employee
     }).then((result) => {
         if (result.statusCode == 200) {
@@ -168,7 +175,8 @@ function Edit() {
     })
 }
 
-function Delete(Id) {
+function Delete(Email) {
+    debugger;
     Swal.fire({
         title: "Are you sure ?",
         text: "You won't be able to Revert this!",
@@ -178,8 +186,8 @@ function Delete(Id) {
         if (result.value) {
             debugger;
             $.ajax({
-                url: "Employee/Delete/",
-                data: { Id: Id }
+                url: "/Employee/Delete/",
+                data: { Email: Email }
             }).then((result) => {
                 debugger;
                 if (result.statusCode == 200) {
@@ -210,6 +218,7 @@ function ClearScreen() {
     $('#FirstName').val('');
     $('#LastName').val('');
     $('#Email').val('');
+    $('#Password').val('');
     $('#BirthDate').val('');
     $('#DepartmentOption').val('');
     $('#PhoneNumber').val('');
@@ -222,14 +231,8 @@ function ClearScreen() {
 
 // handle error after action edit
 document.getElementById("btncreatedept").addEventListener("click", function () {
-    //$('#Id').val('');
-    //$('#FirstName').val('');
-    //$('#LastName').val('');
-    //$('#Email').val('');
-    //$('#BirthDate').val('');
-    //$('#DepartmentOption').val('');
-    //$('#PhoneNumber').val('');
-    //$('#Address').val('');
+    $('#btnSave').show();
+    $('#btnUpdate').hide();
     ClearScreen();
 });
 

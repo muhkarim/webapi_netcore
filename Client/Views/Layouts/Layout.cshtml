@@ -173,11 +173,11 @@
                 </div>
                 <!-- End User profile text-->
                 <!-- Sidebar navigation-->
-                <nav class="sidebar-nav">
-                    <ul id="sidebarnav">
+                <nav class="sidebar-nav" >
+                    <ul id="sidebarnav" class="hide-nav">
                         <li class="nav-small-cap">Dashboard</li>
 
-                        @if (User.Identity.IsAuthenticated && User.IsInRole("Administrator"))
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                         {
                             <li>
                                 <a class="" href="@Url.Action( "Index", "Role")" aria-expanded="false"><i class="mdi mdi-account-box-outline"></i><span class="hide-menu">Role</span></a>
@@ -215,8 +215,7 @@
                 <!-- item-->
                 <a></a>
                 <!-- item-->
-                <form method="post" action="@Url.Action( "LogOff", "User")" id="logoutForm">
-                    @Html.AntiForgeryToken()
+                <form method="post" action="@Url.Action( "Logout", "Account")" id="logoutForm">
                     <a href="javascript:document.getElementById('logoutForm').submit()" class="link" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a>
                 </form>
                 <!-- item-->

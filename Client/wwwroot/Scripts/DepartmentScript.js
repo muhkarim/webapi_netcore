@@ -115,15 +115,16 @@ function GetById(Id) {
 }
 
 function Edit() {
-    //debugger;
+    debugger;
     var Department = new Object();
     Department.Id = $('#Id').val();
     Department.Name = $('#Name').val();
     $.ajax({
         type: 'POST',
-        url: 'Department/InsertOrUpdate',
+        url: '/Department/InsertOrUpdate',
         data: Department
     }).then((result) => {
+        debugger;
         if (result.statusCode == 200) {
             Swal.fire({
                 icon: 'success',
@@ -150,12 +151,12 @@ function Delete(Id) {
         confirmButtonText: "Yes, Delete it!"
     }).then((result) => {
         if (result.value) {
-            debugger;
+            //debugger;
             $.ajax({
-                url: "Department/Delete/",
+                url: "/Department/Delete/",
                 data: { Id: Id }
             }).then((result) => {
-                debugger;
+                //debugger;
                 if (result.statusCode == 200) {
                     Swal.fire({
                         icon: 'success',

@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewData["Title"] = "Employee Details";
+    Layout = "~/Views/Layouts/Layout.cshtml";
+}
+
+<h2>Employee Details</h2>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <form>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">First Name : </label>
+                                <input type="text" class="form-control" id="FirstName">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Last Name : </label>
+                                <input type="text" class="form-control" id="LastName">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Email : </label>
+                        <input type="email" class="form-control" id="Email">
+                    </div>
+                    @*<div class="form-group" id="inputPassword">
+            <label for="recipient-name" class="col-form-label">Password : </label>
+            <input type="password" class="form-control" id="Password">
+        </div>*@
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Birthdate : </label>
+                        <input type="date" class="form-control" id="BirthDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Phone Number : </label>
+                        <input type="text" class="form-control" id="PhoneNumber">
+                    </div>
+                    <div class="form-group">
+                        <label for="DepartmentOption">Department</label>
+                        <select class="form-control" id="DepartmentSelect"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Address : </label>
+                        <textarea type="text" class="form-control" id="Address" rows="4"></textarea>
+                    </div>
+
+
+
+                    <button type="submit" class="btn btn-primary" onclick="Edit()">Submit</button>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+
+    <script src="~/Scripts/EmployeeDetails.js"></script>
+}
+
+

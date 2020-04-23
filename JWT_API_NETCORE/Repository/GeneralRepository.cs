@@ -20,7 +20,7 @@ namespace JWT_API_NETCORE.Repository
         {
             _myContext = myContext;
         }
-
+        
         public async Task<TEntity> Delete(int Id)
         {
 
@@ -65,21 +65,16 @@ namespace JWT_API_NETCORE.Repository
 
         public async Task<TEntity> Put(TEntity entity)
         {
-            //var itemToUpdate = _myContext.Set<TEntity>().Where(x => x.Id == entity.Id);
-
-
-
-            //entity.UpdateDate = DateTimeOffset.Now;
+           
             _myContext.Entry(entity).State = EntityState.Modified;
             await _myContext.SaveChangesAsync();
             return entity;
 
-            //entity.UpdateDate = DateTimeOffset.Now;
-            //var entry = _myContext.Entry(entity);
-            //entry.State = EntityState.Modified;
-            //return entity;
+        }
 
-
+        public async Task<TEntity> GetEmail(string email)
+        {
+            return await _myContext.Set<TEntity>().FindAsync(email);
 
             //throw new NotImplementedException();
         }

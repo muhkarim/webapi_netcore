@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using JWT_API_NETCORE.Repository.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JWT_API_NETCORE.Base
-{
+{   
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class BasesController<TEntity, TRepository> : ControllerBase
@@ -38,13 +40,14 @@ namespace JWT_API_NETCORE.Base
         //    return Ok(get);
         //}
 
-
-        [HttpPost]
-        public async Task<ActionResult<TEntity>> Post(TEntity entity)
-        {
-            await _repository.Post(entity);
-            return CreatedAtAction("Get", new { Id = entity.Id }, entity);
-        }
+        
+        // temporary comment
+        //[HttpPost]
+        //public async Task<ActionResult<TEntity>> Post(TEntity entity)
+        //{
+        //    await _repository.Post(entity);
+        //    return CreatedAtAction("Get", new { Id = entity.Id }, entity);
+        //}
 
 
         //[HttpPut("{Id}")]
@@ -60,16 +63,16 @@ namespace JWT_API_NETCORE.Base
         //}
 
 
-        [HttpDelete("{Id}")]
-        public async Task<ActionResult<TEntity>> Delete(int id)
-        {
-            var delete = await _repository.Delete(id);
-            if (delete == null)
-            {
-                return NotFound();
-            }
-            return delete;
-        }
+        //[HttpDelete("{Id}")]
+        //public async Task<ActionResult<TEntity>> Delete(int id)
+        //{
+        //    var delete = await _repository.Delete(id);
+        //    if (delete == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return delete;
+        //}
 
 
 
